@@ -1,0 +1,92 @@
+.sub-window {
+  aspect-ratio: 1 / 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* overflow: auto; */
+}
+
+.sub-window > * {
+  text-align: center;
+  width: 100%;
+}
+
+.sub-window > button {
+  margin-top: 15px;
+}
+
+.light {
+  background-color: #f5f5f5;
+  transition: background-color .2s;
+  color: #1b1818;
+}
+
+.dark {
+  background-color: #242424;
+  transition: background-color .2s;
+  color: #e0dbdb;
+}
+
+li {
+  user-select: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+b {
+  font-size: 13px;
+}
+
+.problem {
+  position: relative;
+  display: block;
+  max-width: 650px;
+  margin: 0 auto 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 5px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.problem[open] {
+  padding-bottom: 30px;
+}
+
+.problem[open] .problem-title {
+  margin-bottom: 16px;
+}
+
+.problem-title::-webkit-details-marker {
+  display: none;
+}
+
+.problems-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.problem-container {
+  display: inline;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.problem-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.completed {
+  color: rgb(96, 128, 96);
+}
+
+.failed {
+  color: rgb(104, 70, 70);;
+}

@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import Container from './Container';
 
@@ -13,11 +13,11 @@ const ToggleThemeButtonContext = createContext<(() => void) | null>(null);
 function App() {
   const [theme, setTheme] = useState<ThemeType>(defaultTheme);
 
-  const toggleTheme = () => setTheme(theme => {
-    const retTheme = theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', retTheme);
-    return retTheme;
-  });
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(theme => theme === 'dark' ? 'light' : 'dark');
 
   return (
     <>

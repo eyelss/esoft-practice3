@@ -10,7 +10,7 @@ function SubWindowRef() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setPrevInput(inputRef.current!.value)
+    setPrevInput(inputRef.current?.value ?? '')
     inputRef.current!.focus();
   }
 

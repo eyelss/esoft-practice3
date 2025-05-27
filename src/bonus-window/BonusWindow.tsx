@@ -78,9 +78,11 @@ function BonusWindow() {
 
   const handleActionAddWorker = useCallback((formData: FormData): void => {
     const name = formData.get('worker_name')?.toString();
-    name && setWorkers(workers => {
-      return [...workers, { id: generateId(), name }]
-    })
+    if (name) {
+      setWorkers(workers => {
+        return [...workers, { id: generateId(), name }];
+      });
+    }
   }, [setWorkers]);
 
   const handleActionAddProblem = useCallback((formData: FormData): void => {
@@ -88,7 +90,9 @@ function BonusWindow() {
     const workerId = parseInt(formData.get('worker_select')!.toString());
     const worker = workers.find(worker => worker.id == workerId);
     
-    worker && dispatchProblems({ type: ProblemActionType.ADD_PROBLEM, problem: { id: generateId(), solver: worker, statement, tasks: [] } })
+    if (worker) {
+      dispatchProblems({ type: ProblemActionType.ADD_PROBLEM, problem: { id: generateId(), solver: worker, statement, tasks: [] } });
+    }
   }, [dispatchProblems, workers]);
 
   const handleActionAddTask = useCallback((problemId: IdType, task: TaskType): void => {
@@ -102,7 +106,7 @@ function BonusWindow() {
       problemId,
       task,
     });
-  }, [dispatchProblems, problems]);
+  }, [dispatchProblems]);
 
   const filterDispatchCallback = useCallback((action: FilterAction) => filterDispatch(action), [filterDispatch]);
 
